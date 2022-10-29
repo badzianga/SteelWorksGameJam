@@ -5,8 +5,11 @@ const MAX_SPEED = 200
 const FRICTION = 1000
 
 var velocity = Vector2.ZERO
-var current_item: String = ""
+var current_item := ""
+var in_area := ""
 
+onready var animationTree := $AnimationTree
+onready var animationState = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
 	# get movement
@@ -16,32 +19,51 @@ func _physics_process(delta):
 
 	# move player
 	if vector != Vector2.ZERO:
+		animationTree.set("parameters/Idle/blend_positon", velocity)
+		animationTree.set("parameters/Run/blend_positon", velocity)
 		velocity = velocity.move_toward(vector.normalized() * MAX_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	velocity = move_and_slide(velocity)
 
 	# interact with objects
-	if Data.in_area != "":
+	if in_area != "":
 		if Input.is_action_just_pressed("ui_accept"):
-			match Data.in_area:
+			match in_area:
 				"Child":
-					pass
+					if current_item == "Milk":
+						pass  # feeding TODO
+					elif current_item == "Diapers":
+						pass  # hajżin TOOD
+					else:
+						pass  # singing and lullabying TODO
+					current_item = ""
 				"Milk":
-					current_item = "Milk"
+					if current_item == "Milk":
+						current_item = ""
+					else:
+						current_item = "Milk"
 				"Diapers":
-					current_item = "Diapers"
+					if current_item == "Milk":
+						current_item = ""
+					else:
+						current_item = "Diapers"
 				"Desk":
-					pass
+					pass  # what to do? TODO
 			print("Item: " + current_item)
-			print("Area: " + Data.in_area)
+			print("Area: " + in_area)
 
 
 func _on_InteractionArea_body_entered(body):
 	print(body.name)
 	if body.name in ["Child", "Desk", "Milk", "Diapers"]:
-		Data.in_area = body.name
-	
+		in_area = body.name
+
 
 func _on_InteractionArea_body_exited(_body):
-	Data.in_area = ""
+	in_area = ""
+
+
+func _on_InteractionArea_area_entered(area):
+	if area.name == "BetweenRooms":
+		current_item = ""

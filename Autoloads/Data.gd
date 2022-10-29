@@ -5,7 +5,6 @@ const DIFFICULTY_HARD = 1
 
 var score: int # current score
 var mistakes_left: int  # a.k.a. lifes (allowed mistakes on desk)
-var in_area: String  # body (interaction object) name
 var client_timer = 20  # time for all documents
 var hunger_decrease: int
 var happiness_decrease: int
@@ -14,7 +13,6 @@ var hygiene_decrease: int
 
 func reset(difficulty: int):
 	score = 0
-	in_area = ""
 	if difficulty == DIFFICULTY_CASUAL:
 		mistakes_left = 3
 		hunger_decrease = 2

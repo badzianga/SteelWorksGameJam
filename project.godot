@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="SteelWorksGameJam"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Data="*res://Data.gd"
+Data="*res://Autoloads/Data.gd"
+Names="*res://Autoloads/Names.gd"
 
 [display]
 
