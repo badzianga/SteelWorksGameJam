@@ -2,6 +2,7 @@ extends Node
 
 const DIFFICULTY_CASUAL = 0
 const DIFFICULTY_HARD = 1
+const BAR_TIMEOUT_DECREASE_VALUE = 3
 
 var score: int # current score
 var mistakes_left: int  # a.k.a. lifes (allowed mistakes on desk)
