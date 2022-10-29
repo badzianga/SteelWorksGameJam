@@ -214,7 +214,7 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id=7]
 states/Idle/node = SubResource( 20 )
-states/Idle/position = Vector2( -551, -87.7322 )
+states/Idle/position = Vector2( -552, -87.9132 )
 states/Run/node = SubResource( 25 )
 states/Run/position = Vector2( -373.667, -87.9132 )
 transitions = [ "Run", "Idle", SubResource( 26 ), "Idle", "Run", SubResource( 27 ) ]
@@ -255,10 +255,9 @@ anims/RunTop = SubResource( 13 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 8 )
-parameters/Idle/blend_position = Vector2( 0, 0 )
-parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0, 0.2 )
+parameters/Run/blend_position = Vector2( 0, 0.2 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
 position = Vector2( 0, 1 )
