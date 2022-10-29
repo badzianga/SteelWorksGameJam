@@ -3,7 +3,6 @@ extends Node
 const DIFFICULTY_CASUAL = 0
 const DIFFICULTY_HARD = 1
 
-var difficulty: int  # one of the difficulties above
 var score: int # current score
 var mistakes_left: int  # a.k.a. lifes (allowed mistakes on desk)
 var in_area: String  # body (interaction object) name
